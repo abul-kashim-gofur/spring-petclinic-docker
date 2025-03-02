@@ -39,15 +39,6 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: maven:3.8-jdk-11
                     intelligenceMode: true
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    repo: YOUR_DOCKER_HUB_USERNAME/DOCKER_REPO_NAME
-                    tags:
-                      - <+pipeline.sequenceId>
         failureStrategies:
           - onFailure:
               errors:
