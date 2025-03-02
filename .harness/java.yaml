@@ -1,0 +1,56 @@
+pipeline:
+  name: java
+  identifier: java
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: petclinic
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            caching: null
+            enabled: true
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Test
+                  name: RunTestsWithIntelligence
+                  identifier: RunTestsWithIntelligence
+                  spec:
+                    command: |-
+                      mvn test
+                      mvn package -DskipTests
+                    shell: Sh
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    intelligenceMode: true
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: YOUR_DOCKER_HUB_USERNAME/DOCKER_REPO_NAME
+                    tags:
+                      - <+pipeline.sequenceId>
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsFailure
