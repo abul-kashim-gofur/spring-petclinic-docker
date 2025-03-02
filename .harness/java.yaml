@@ -18,8 +18,6 @@ pipeline:
         spec:
           cloneCodebase: true
           platform:
-            caching: null
-            enabled: true
             os: Linux
             arch: Amd64
           runtime:
@@ -39,6 +37,15 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: maven:3.8-jdk-11
                     intelligenceMode: true
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: abulkashimgofurdockerhub
+                    repo: abulkashimgofur/pet-clinic
+                    tags:
+                      - abc
         failureStrategies:
           - onFailure:
               errors:
