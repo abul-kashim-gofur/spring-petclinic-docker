@@ -45,7 +45,7 @@ pipeline:
                     connectorRef: abulkashimgofurdockerhub
                     repo: abulkashimgofur/pet-clinic
                     tags:
-                      - abc
+                      - <+pipeline.sequenceId>
         failureStrategies:
           - onFailure:
               errors:
