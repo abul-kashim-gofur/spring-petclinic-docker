@@ -16,7 +16,12 @@ service:
                   connectorRef: petclinic
                   gitFetchType: Branch
                   paths:
-                    - k8s/
+                    - k8s/petclinic-service.yaml
+                    - k8s/petclinic-deployment.yaml
+                    - k8s/mysql-service.yaml
+                    - k8s/mysql-deployment.yaml
+                    - k8s/mysql-data-persistentvolumeclaim.yaml
+                    - k8s/mysql-config-persistentvolumeclaim.yaml
                   branch: main
               skipResourceVersioning: false
               enableDeclarativeRollback: false
