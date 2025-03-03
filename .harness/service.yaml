@@ -1,5 +1,8 @@
 service:
-  name: petclinice
+  name: petclinic
   identifier: petclinice
   orgIdentifier: default
   projectIdentifier: default_project
+  serviceDefinition:
+    spec: {}
+    type: Kubernetes
