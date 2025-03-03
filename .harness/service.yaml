@@ -4,5 +4,20 @@ service:
   orgIdentifier: default
   projectIdentifier: default_project
   serviceDefinition:
-    spec: {}
+    spec:
+      manifests:
+        - manifest:
+            identifier: petclinic
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: petclinic
+                  gitFetchType: Branch
+                  paths:
+                    - k8s/
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
     type: Kubernetes
