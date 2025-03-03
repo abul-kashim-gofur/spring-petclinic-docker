@@ -31,7 +31,7 @@ spec:
               value: jdbc:mysql://mysqlserver/petclinic
             - name: SERVER_PORT
               value: "8080"
-          image: abulkashimgofur/pet-clinic
+          image: abulkashimgofur/pet-clinic:3
           imagePullPolicy: IfNotPresent
           name: petclinic
           ports:

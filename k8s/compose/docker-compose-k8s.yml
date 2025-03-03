@@ -1,7 +1,7 @@
 
 services:
   petclinic:
-    image: abulkashimgofur/petclinic
+    image: abulkashimgofur/petclinic:3
     ports:
       - 8000:8000
       - 8080:8080
