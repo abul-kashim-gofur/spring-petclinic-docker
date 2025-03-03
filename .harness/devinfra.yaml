@@ -1,0 +1,14 @@
+infrastructureDefinition:
+  name: dev-infra
+  identifier: devinfra
+  orgIdentifier: default
+  projectIdentifier: default_project
+  environmentRef: dev
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: devmachine
+    namespace: dev
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+  scopedServices: []
