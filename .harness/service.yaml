@@ -1,0 +1,5 @@
+service:
+  name: petclinice
+  identifier: petclinice
+  orgIdentifier: default
+  projectIdentifier: default_project
